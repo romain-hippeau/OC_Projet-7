@@ -31,6 +31,24 @@ app.get("/", (req, res) => {
 
 const db = require("./models");
 db.sequelize.sync();
+//force: true will drop the table if it already exists
+//db.sequelize.sync({force: true}).then(() => {
+  //console.log('Drop and Resync Database with { force: true }');
+  //initial();
+//});
+// function pour creer les routes
+function initial() {
+    Role.create({
+      id: 1,
+      name: "user"
+    });
+   
+    Role.create({
+      id: 2,
+      name: "admin"
+    });
+  }
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8081;
