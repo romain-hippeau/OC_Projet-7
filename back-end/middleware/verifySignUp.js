@@ -19,8 +19,22 @@ checkDuplicateEmail = (req, res, next) => {
         next();
     });
 };
+checkRolesExisted = (req, res, next) => {
+    if (req.body.roles) {
+        for (let i = 0; i < req.body.roles.length; i++) {
+            if (!ROLES.includes(req.body.roles[i])) {
+                res.status(400).send({
+                message: "Erreur, ce rôle n'existe pas = " + req.body.roles[i]
+                });
+                return;
+            }
+        }
+    }
+    next();
+};
 const verifySignUp = {
     checkDuplicateEmail: checkDuplicateEmail,
+    checkRolesExisted: checkRolesExisted
 };
   
 module.exports = verifySignUp;

@@ -14,7 +14,7 @@ module.exports = function(app) {
     //route pour l'accés a tout utilisateur
     app.get("/api/test/all", controller.allAccess);
 
-    //route pour l'accés des utilisateur inscrit
+    //route pour l'accés des utilisateur
     app.get(
         "/api/test/user",
         [authJwt.verifyToken],
@@ -24,7 +24,7 @@ module.exports = function(app) {
     //route qui donne l'accès aux administrateurs
     app.get(
         "/api/test/admin",
-        [authJwt.verifyToken,],
+        [authJwt.verifyToken, authJwt.isAdmin],
         controller.adminBoard
      );
 };
