@@ -1,9 +1,9 @@
 //configuration de la db Mysql
 module.exports = {
-    HOST: "localhost",
-    USER: "root",
-    PASSWORD: "Manutd33",
-    DB: "Groupomania",
+    HOST: "127.0.0.1",
+    username: "root",
+    PASSWORD: "",
+    DB: "server-groupomania",
     dialect: "mysql",
     pool: {
       max: 5,

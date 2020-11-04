@@ -53,7 +53,7 @@ app.get("/", (req, res) => {
 });
 
 //routes
-require('./routes/user.routes')(app);
+require('./routes/user.js')(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {

@@ -1,33 +1,28 @@
-const config = require("../config/db.config.js");
-
-const Sequelize = require("sequelize");
-const sequelize = new Sequelize(
-  config.DB,
-  config.USER,
-  config.PASSWORD,
-  {
-    host: config.HOST,
-    dialect: config.dialect,
-    operatorsAliases: false,
-
-    pool: {
-      max: config.pool.max,
-      min: config.pool.min,
-      acquire: config.pool.acquire,
-      idle: config.pool.idle
-    }
+const env = require('../config/env');
+ 
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize(env.database, env.username, env.password, {
+  host: env.host,
+  dialect: env.dialect,
+  operatorsAliases: false,
+ 
+  pool: {
+    max: env.max,
+    min: env.pool.min,
+    acquire: env.pool.acquire,
+    idle: env.pool.idle
   }
-);
-
+});
+ 
 const db = {};
-
+ 
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.user = require("../models/user.model.js")(sequelize, Sequelize);
 db.role = require("../models/role.model.js")(sequelize, Sequelize);
-db.publication = require("../models/publication.model.js")(sequelize, Sequelize);
-db.comments = require("../models/comments.model.js")(sequelize, Sequelize);
+db.publication = require("../models/publications.model.js")(sequelize, Sequelize);
+db.comments = require("../models/commentaire.model.js")(sequelize, Sequelize);
 
 db.role.belongsToMany(db.user, {
   through: "user_roles",

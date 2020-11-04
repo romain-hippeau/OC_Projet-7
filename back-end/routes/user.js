@@ -1,6 +1,6 @@
 //Importation des middleware pour verifier les roles et le token
-const { authJwt } = require("../middlewares");
-const controller = require("../controllers/user.controller");
+const { authJwt } = require("../middleware");
+const controller = require("../controllers/user.controllers");
 
 
 module.exports = function(app) {
