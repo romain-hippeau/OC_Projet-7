@@ -2,7 +2,7 @@
 const { authJwt } = require("../middleware");
 
 module.exports = app => {
-    const publications = require("../controllers/publication.controller");
+    const publications = require("../controllers/publications.ctrl");
     const multer = require('../middleware/multer-config');
   
     var router = require("express").Router();

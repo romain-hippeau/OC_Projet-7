@@ -51,6 +51,114 @@ exports.create = (req, res) => {
         .catch(error => res.status(500).json(error));
     
 };
-// implementation pour trouver toutes les publications
-// implementation pour trouver et retourner une publication
-// implementation pour supprimer une publication
+// parametre pour avoir toutes les publications
+exports.findAll = (req, res) => {
+    
+    Publication.findAll({
+        include: [
+            {
+                model: User,
+                attributes: ['lastname', 'firstname']
+            },
+            {
+                model: Comment,
+                attributes: ['text','id'],
+                include: {
+                    model: User,
+                    attributes: ['lastname', 'firstname', 'id']
+                }
+            }
+        ],
+        order: [['createdAt', 'DESC']]
+    })
+        .then(data =>{
+            res.send(data);
+        })
+        .catch(err =>{
+            res.status(500).send({
+                message: err.message || "Des erreurs sont survenues lors de la récupération des publications de l'utilisateur"
+            })
+        })
+}
+
+// parametre pour trouver une publication avec son id
+exports.findOne = (req, res) => {
+    
+    const id = req.params.id;
+    
+    Publication.findByPk(id)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Erreur lors de la recherchde de la publication par id avec id=" + id
+            });
+        });
+};
+
+
+
+// parametre pour supprimer une publication avec son id
+exports.delete = (req, res) => {
+    let publicationId = req.params.id;
+    let userIdForDelete = req.userId
+
+    User.findOne({
+        where: {id: userIdForDelete},
+        include:[   
+            {
+                model: Role,
+            }
+        ]
+    })
+    .then(user =>{
+        let userForDeleteRole = user.roles[0].name;
+
+        Publication.findOne({
+            where: {id: publicationId},
+        })
+            .then(publication => {
+    
+                if (publication.userId === userIdForDelete || userForDeleteRole === "admin"){
+    
+                    Publication.destroy({
+                        where: {id: publicationId}
+                    })
+                    .then(num => {
+                        if (num == 1) {
+                          res.send({
+                            message: "la publication a bien été supprimé"
+                          });
+                        } else {
+                            res.send({
+                                message: `la publication n'as pas pu etre detruite avec son id=${publicationId}.!`
+                            });
+                        }
+                    })
+                    .catch(err => {
+                        res.status(500).send({
+                            message: `la publication n'as pas pu etre detruite avec son id=${publicationId}.!`
+                        });
+                    });
+                } else {
+                    res.status(401).send({
+                        message: 'impossible de supprimer ce message'
+                    })
+                }
+                
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message: "la recherche de la publication n'as pas abouti par id avec id=" + publicationId
+                });
+            });
+    })
+    .catch(err =>{
+        res.status(500).send({
+            message: "la recherche de l'utilisateur n'as pas abouti"
+        })
+    })
+}
+
+
