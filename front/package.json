@@ -11,6 +11,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "bootstrap": "^4.5.3",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "vee-validate": "^2.2.15",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
