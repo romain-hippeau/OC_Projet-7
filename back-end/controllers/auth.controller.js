@@ -97,4 +97,38 @@ exports.signin = (req, res) => {
     res.status(500).send({ message: err.message });
     });   
 };
-// exports.delete
+exports.delete = (req,res)=>{
+  const id = req.params.id
+  User.findOne({
+    where: {
+      id:id
+    }
+  })
+  .then(user =>{
+    console.log(user)
+    if (!user) {
+      return res.status(404).send({ message: "L'utilisateur  n'a pas été trouvé." });
+    }
+    else{
+      User.destroy({
+        where: {id:id}
+      })
+      .then(num => {
+        if (num == 1) {
+          res.send({
+            message: "l'utilisateur a été supprimé avec succés"
+          });
+        } else {
+          res.send({
+            message: `impossible de supprimer l'utilisateur avec son id `
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "impossible de supprimer l'utilisateur avec son id" + id
+        });
+      });
+    }
+  })
+}

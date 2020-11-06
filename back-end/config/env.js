@@ -2,7 +2,7 @@
 module.exports = {
     HOST: "127.0.0.1",
     username: "root",
-    PASSWORD: "",
+    PASSWORD: "Manutd33",
     DB: "server-groupomania",
     dialect: "mysql",
     pool: {
