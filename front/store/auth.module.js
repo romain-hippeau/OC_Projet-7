@@ -1,4 +1,4 @@
-import AuthService from '../services/auth.service';//contient nos requete axios
+import AuthService from '../src/services/auth.service';//contient nos requete axios
 
 const user = JSON.parse(localStorage.getItem('user'));//on utilise json.parse pour enregister notre token en json
 
