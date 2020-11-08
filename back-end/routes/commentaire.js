@@ -7,6 +7,9 @@ module.exports = app => {
   
     // route qui permet la creation d'un nouveau commentaire
     router.post("/", commentaires.createComment);
-  
-    app.use('/api/commentaires', router);
+   // Route qui permet de supprimer un commentaire
+
+   router.delete("/:id", [authJwt.verifyToken], commentaires.deleteComment);
+    
+   app.use('/api/commentaires', router);
 };

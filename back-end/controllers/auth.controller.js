@@ -1,4 +1,4 @@
-const db = require('../config/db.config.js');
+const db = require('../models');
 const config = require('../config/config.js');
 const User = db.user;
 const Role = db.role;
@@ -9,15 +9,15 @@ var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt');
  
 exports.signup = (req, res) => {
-    
-    const firstname = req.body.firstname;
+    console.log(req.body);
+    const firstname = req.body.name;
     const lastname = req.body.lastname;
     const email = req.body.email;
     const password = req.body.password;
 
   // Sauvegarde de l'utilisateur dans la base de données 
   User.create({
-    name: req.body.name,
+    firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8)

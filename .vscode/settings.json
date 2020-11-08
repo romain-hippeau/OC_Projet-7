@@ -10,7 +10,20 @@
             "askForPassword": true,
             "driver": "MySQL",
             "name": "local instance mysql57",
-            "database": "server-Groupomania",
+            "database": "Groupomania",
+            "username": "root"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "askForPassword": true,
+            "driver": "MySQL",
+            "name": "groupomania",
+            "database": "groupomania",
             "username": "root"
         }
     ]

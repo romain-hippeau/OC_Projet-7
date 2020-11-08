@@ -1,5 +1,4 @@
 //multer seras utilisé pour la gestion du stockage des images
-
 const multer = require('multer'); 
 //fichier accepter
 const MIME_TYPES = {
