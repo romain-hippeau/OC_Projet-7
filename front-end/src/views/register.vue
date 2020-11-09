@@ -3,6 +3,7 @@
         <div class="card card-container">
             <img
             id="profile-img"
+            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
             class="profile-img-card"
             alt="avatar par défaut d'un utilisateur"
             />
