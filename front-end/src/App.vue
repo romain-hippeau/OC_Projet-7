@@ -1,14 +1,12 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <a href class="navbar-brand" @click.prevent>groupomania</a>
+    <nav class="navbar navbar-expand navbar-dark bg-primary ">
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link to="/home" class="nav-link">
-            <img src="/assets/goupomania-white.png" alt="" srcset="">
+          <router-link to="/home" class="nav-link">groupomania
           </router-link>
         </li>
-        <li v-if="showAdminBoard" class="nav-item">
+        <li v-if="showAdminBoard" class="nav-item ">
           <router-link to="/admin" class="nav-link">Admin Board</router-link>
         </li>
         <li class="nav-item">
@@ -16,7 +14,7 @@
         </li>
       </div>
 
-      <div v-if="!currentUser" class="navbar-nav ml-auto">
+      <div v-if="!currentUser" class="navbar-nav ml-auto ">
         <li class="nav-item">
           <router-link to="/register" class="nav-link">
             <font-awesome-icon icon="user-plus" />Sign Up

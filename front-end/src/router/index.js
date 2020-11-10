@@ -3,7 +3,6 @@ import Router from 'vue-router';
 import Home from '../views/Home.vue';
 import Login from '../views/login'
 import Register from '../views/register';
-import Profile from '../views/profile'
 Vue.use(Router);
 
 export const router = new Router({
@@ -26,7 +25,27 @@ export const router = new Router({
       path: '/register',
       component: Register
     },
-  {
-    path:'/profile',
-    component: Profile
-  }]})
+    {
+      path: '/profile',
+      name: 'profile',
+      component: () => import('../views/profile')
+    },
+    {
+      path: '/publication',
+      name: 'publication',
+      // lazy-loaded
+      component: () => import('../views/publication')
+    },]})
+    router.beforeEach((to, from, next) => {
+      const publicPages = ['/login', '/register', '/home'];
+      const authRequired = !publicPages.includes(to.path);
+      const loggedIn = localStorage.getItem('user');
+    
+      //trying to access a restricted page + not logged in
+      // redirect to login page
+      if (authRequired && !loggedIn) {
+        next('/login');
+      } else {
+        next();
+      }
+    });

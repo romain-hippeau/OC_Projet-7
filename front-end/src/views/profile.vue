@@ -8,6 +8,7 @@
       <div class="profile-container">
         <img
         id="profile-img"
+        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
         class="profile-img-card"
         />
         <div class="profile-info">
@@ -102,9 +103,5 @@ strong{
   color: #fff;
   transition: all .5s;
   transition-timing-function: cubic-bezier(.2, 3, .4, 1);
-  &:hover{
-    transform: scale(1.1, 1.1);
-    background-color: #e70435;
-  }
 }
 </style>
