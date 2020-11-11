@@ -2,7 +2,7 @@ const env = require('../config/db.config');
  
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(env.database, env.username,env.PASSWORD, {
-  host: env.host,
+  host: env.HOST,
   dialect: env.dialect,
   operatorsAliases: false,
  

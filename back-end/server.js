@@ -30,11 +30,8 @@ const db = require("./models");
  
 const Role = db.role;
   
-// force: true will drop the table if it already exists
-db.sequelize.sync({force: true}).then(() => {
-  console.log('Drop and Resync with { force: true }');
-  initial();
-});
+
+db.sequelize.sync();
 // function pour creer les routes
 function initial() {
     Role.create({

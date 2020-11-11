@@ -44,6 +44,7 @@ export default {
       return this.$store.state.auth.user;
     }
   },
+  //fonction pour supprimer l'utilisateur en récuperant son id
   methods:{
     deleteUser() {
       console.log(this.$store.state.auth.user.id);
@@ -92,6 +93,9 @@ strong{
   border-radius: 15px;
   margin-top: 20px;
   padding-left: 10px;
+  ul{
+    list-style: none;
+  }
 }
 .deleteUser{
   margin: 5% 0 0 0;

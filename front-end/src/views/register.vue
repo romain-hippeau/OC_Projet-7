@@ -173,8 +173,6 @@ input{
 #btn-inscription{
   background-color: #e70435;
   border: none;
-  transition: all .5s;
-  transition-timing-function: cubic-bezier(.2, 3, .4, 1);
   
 }
 
