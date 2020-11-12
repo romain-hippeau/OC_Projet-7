@@ -75,11 +75,10 @@ export default {
 .jumbotron-profile{
  margin-top: 100px;
  text-align: center;
-  border: solid #042255 3px;
   flex-basis: 75%;
   background-color: #fff;
   border-radius: 25px;
-  
+  box-shadow: 2px 5px 10px 5px #777
 }
 img{
   width: 120px;

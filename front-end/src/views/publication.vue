@@ -71,12 +71,11 @@ export default {
 };
 </script>
 
-<style lang='css'>
+<style lang='css' >
 .container{
     display: flex;
     justify-content: center;
     flex-basis: 75%;
-    border: 1px solid black;
     margin-top: 100px;
     border-radius: 1%;
     text-align: center;
