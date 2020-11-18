@@ -34,4 +34,4 @@ axios et vee-validate
 
 
 POUR LANCER L'APPLICATION FRONT :
-cd front npm install npm run serve
+cd front-end npm install npm run serve
