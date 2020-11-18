@@ -12,6 +12,9 @@ Si vous avez besoin de réinitialiser les tables de votre base de données, vous
 a l'interieur de sequelize.sync({ });
 qui se trouve dans back-end/server.js
 -créer un dossier images dans le dosiser back-end pour enregistrer les images.
+
+POUR LANCER Le back-end :
+ensuite faire cd back-end npm install npm start.
 Les framework utilisées sont :
 Backend :
 
